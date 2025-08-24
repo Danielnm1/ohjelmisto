@@ -1,14 +1,11 @@
-# Kysy kolme kokonaislukua käyttäjältä
-luku1 = int(input("Anna ensimmäinen kokonaisluku: "))
-luku2 = int(input("Anna toinen kokonaisluku: "))
-luku3 = int(input("Anna kolmas kokonaisluku: "))
+num1 = int(input("Enter the first integer: "))
+num2 = int(input("Enter the second integer: "))
+num3 = int(input("Enter the third integer: "))
 
-# Laske summa, tulo ja keskiarvo
-summa = luku1 + luku2 + luku3
-tulo = luku1 * luku2 * luku3
-keskiarvo = summa / 3
+sum_of_numbers = num1 + num2 + num3
+product_of_numbers = num1 * num2 * num3
+average_of_numbers = sum_of_numbers / 3
 
-# Tulosta tulokset
-print(f"Lukujen summa on {summa}")
-print(f"Lukujen tulo on {tulo}")
-print(f"Lukujen keskiarvo on {keskiarvo:.2f}")
+print("The sum of the numbers:", sum_of_numbers)
+print("The product of the numbers:", product_of_numbers)
+print("The average of the numbers:", average_of_numbers)

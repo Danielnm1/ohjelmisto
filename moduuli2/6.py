@@ -1,17 +1,21 @@
 import random
 
-# Arvotaan kolmenumeroisen lukon koodi (numerot 0–9)
-koodi1 = ""
+# Generate 3-digit code (0-9)
+code_3_digit = ""
 for _ in range(3):
-    koodi1 += str(random.randint(0, 9))
+    code_3_digit += str(random.randint(0, 9))
 
-# Arvotaan nelinumeroisen lukon koodi (numerot 1–6)
-koodi2 = ""
+# Generate 4-digit code (1-6)
+code_4_digit = ""
 for _ in range(4):
-    koodi2 += str(random.randint(1, 6))
+    code_4_digit += str(random.randint(1, 6))
 
-# Tulostetaan molemmat koodit
-print("Kolmenumeroisen lukon koodi (numerot 0–9):", koodi1)
-print("Nelinumeroisen lukon koodi (numerot 1–6):", koodi2)
+# Ensure codes are exactly the right length
+code_3_digit = code_3_digit.zfill(3)
+code_4_digit = code_4_digit.zfill(4)
+
+# Print results
+print(f"3-digit code: {code_3_digit}")
+print(f"4-digit code: {code_4_digit}")
 
 

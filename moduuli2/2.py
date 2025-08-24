@@ -1,10 +1,4 @@
 import math
-
-# Kysy käyttäjältä säde
-sade = float(input("Anna ympyrän säde: "))
-
-# Laske pinta-ala
-pinta_ala = math.pi * sade ** 2
-
-# Tulosta tulos
-print(f"Ympyrän pinta-ala on {pinta_ala:.2f}")
+radius = float(input("Enter the radius of the circle: "))
+area = math.pi * radius ** 2
+print("The area of the circle is", area)

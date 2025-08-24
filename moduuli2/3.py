@@ -1,11 +1,8 @@
-# Kysy käyttäjältä suorakulmion kannan ja korkeuden
-kanta = float(input("Anna suorakulmion kanta: "))
-korkeus = float(input("Anna suorakulmion korkeus: "))
+length = float(input("Enter the length of the rectangle: "))
+width = float(input("Enter the width of the rectangle: "))
 
-# Laske pinta-ala ja piiri
-pinta_ala = kanta * korkeus
-piiri = 2 * (kanta + korkeus)
+perimeter = 2 * (length + width)
+area = length * width
 
-# Tulosta tulokset
-print(f"Suorakulmion pinta-ala on {pinta_ala:.2f}")
-print(f"Suorakulmion piiri on {piiri:.2f}")
+print("The perimeter of the rectangle is", perimeter)
+print("The area of the rectangle is", area)

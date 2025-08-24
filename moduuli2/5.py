@@ -1,26 +1,22 @@
-# Keskiaikaisten mittojen muunnos kiloiksi ja grammoiksi
+# Kysytään käyttäjältä syötteet
+talents = float(input("Enter talents: "))
+pounds = float(input("Enter pounds: "))
+lots = float(input("Enter lots: "))
 
-# Vakioarvot
-LUOTI_GR = 13.3
-NAULA_LUOTI = 32
-LEIVISKA_NAULA = 20
+# Muunnoskertoimet
+lots_per_pound = 32
+pounds_per_talent = 20
+grams_per_lot = 13.3
 
-# Kysytään käyttäjältä (sallitaan desimaalit)
-leiviskat = float(input("Anna leiviskät: "))
-naulat = float(input("Anna naulat: "))
-luodit = float(input("Anna luodit: "))
+# Lasketaan kokonaispaino grammoina
+total_grams = (talents * pounds_per_talent * lots_per_pound * grams_per_lot) + \
+              (pounds * lots_per_pound * grams_per_lot) + \
+              (lots * grams_per_lot)
 
-# Lasketaan kokonaisluodit
-kokonaisluodit = leiviskat * LEIVISKA_NAULA * NAULA_LUOTI \
-               + naulat * NAULA_LUOTI \
-               + luodit
+# Muunnetaan grammat kilogrammoiksi ja jäljelle jääviksi grammoiksi
+kilograms = int(total_grams // 1000)
+remaining_grams = total_grams % 1000
 
-# Muutetaan grammoiksi
-grammat = kokonaisluodit * LUOTI_GR
-
-# Erotellaan kilogrammat ja ylimääräiset grammat
-kilot = int(grammat // 1000)
-grammat = grammat % 1000
-
-# Tulostus
-print(f"Massa nykymittojen mukaan: {kilot} kilogrammaa ja {grammat:.2f} grammaa")
+# Tulostetaan tulos
+print("The weight in modern units:")
+print(f"{kilograms} kilograms and {remaining_grams:.2f} grams.")

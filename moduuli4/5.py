@@ -1,8 +1,4 @@
-
-
-
 laskuri = 0
-
 while laskuri < 5:
     kayttaja_tunnus = input("Anna kayttajatunnuksesi: ")
     salasana = input("Anna salasanasi: ")

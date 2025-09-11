@@ -5,6 +5,6 @@ def roll_dice():
 
 while True:
     result = roll_dice()
-    print(f"roll:{result}")
+    print(result)
     if result == 6:
         break

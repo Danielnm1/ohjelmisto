@@ -1,25 +1,44 @@
-import json
-from flask import Flask,Response
-app = Flask(__name__)
-@app.route('/square/<number>')
-def square(number):
-    try:
-       number = float(number)
-       square = number**2
-       response ={
-           'number_float': number,
-           'square': square,
-           'status' : 200
-       }
-       return response
+from flask import Flask, jsonify
+import mysql.connector
 
-    except ValueError:
-        response = {
-            'message': 'invalid input',
-            'status':400
-        }
-        response_json = json.dumps(response)
-        response_http = Response(response=response_json,status=400,mimetype='application/json')
-        return response_http
-if __name__ =='__main__':
-    app.run(use_reloader =True, host='127.0.0.1',port = 5000)
+app = Flask(__name__)
+
+
+def get_airport_by_icao(icao_code):
+
+    conn = mysql.connector.connect(
+        host='127.0.0.1',
+        port=3306,
+        database='flight_game',
+        user='Daniel',
+        password='DA10',
+        autocommit=True
+    )
+    cursor = conn.cursor(dictionary=True)  # Use dictionary=True for easy JSON conversion
+
+    query = """
+            SELECT ident AS ICAO, name AS Name, municipality AS Municipality
+            FROM airport
+            WHERE ident = %s; \
+            """
+    cursor.execute(query, (icao_code,))
+    result = cursor.fetchone()  # Only one row expected
+
+    cursor.close()
+    conn.close()
+    return result
+
+
+@app.route('/kenttä/<icao>', methods=['GET'])
+def airport_route(icao):
+    icao = icao.upper()
+    airport = get_airport_by_icao(icao)
+
+    if airport:
+        return jsonify(airport)
+    else:
+        return jsonify({"error": "Airport not found"}), 404
+
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=3000, debug=True)

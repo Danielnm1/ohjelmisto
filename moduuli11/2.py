@@ -6,8 +6,7 @@ class Car:
         self.travelled_distance = 0
 
     def accelerate(self, speed_change):
-        """Change the speed of the car by the given amount,
-        without exceeding maximum_speed or going below 0."""
+
         self.current_speed += speed_change
         if self.current_speed > self.maximum_speed:
             self.current_speed = self.maximum_speed
@@ -15,7 +14,7 @@ class Car:
             self.current_speed = 0
 
     def drive(self, hours):
-        """Drive the car for the given number of hours."""
+
         self.travelled_distance += self.current_speed * hours
 
     def print_information(self):

@@ -5,11 +5,13 @@ conn = mysql.connector.connect(
     host='127.0.0.1',
     port=3306,
     database='flight_game',
-    user='Daniel',
-    password='DA10',
+    user='root',
+    password='1234',
     autocommit=True
 )
 
+
+from geopy.distance import geodesic
 
 def get_airport_coordinates(icao_code):
     cursor = conn.cursor()
@@ -18,10 +20,9 @@ def get_airport_coordinates(icao_code):
     cursor.close()
     return result
 
-
 def run_airport_distance():
-    icao1 = input("Enter the first ICAO code: ")
-    icao2 = input("Enter the second ICAO code: ")
+    icao1 = input("Enter the first ICAO code: ").strip().upper()
+    icao2 = input("Enter the second ICAO code: ").strip().upper()
 
     coord1 = get_airport_coordinates(icao1)
     coord2 = get_airport_coordinates(icao2)
@@ -30,11 +31,8 @@ def run_airport_distance():
         distance = geodesic((coord1[0], coord1[1]), (coord2[0], coord2[1])).kilometers
         print(f"Distance between airports is {round(distance, 2)} kilometers.")
     else:
-        print("One or both ICAO codes are invalid.")
+        print("❌ One or both ICAO codes are invalid.")
 
-    cursor = conn.cursor()
-    cursor.close()
     conn.close()
-
 
 run_airport_distance()

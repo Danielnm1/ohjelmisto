@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Finder to Karaportti 2</title>
+
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"/>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
+
+    <script src="assignment7.js" defer></script>
+
+    <style>
+        #map {
+            height: 500px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Find a Route to Karaportti 2</h1>
+
+<form id="addrForm">
+    <input id="addrInput" type="text" placeholder="Type your address here" required>
+    <input type="submit" value="Show Route">
+</form>
+
+<p id="tripInfo"></p>
+<div id="map"></div>
+
+</body>
+</html>
